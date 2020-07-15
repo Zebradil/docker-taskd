@@ -9,19 +9,19 @@ set -euo pipefail
 if [ ! -f "${PKI}/ca.cert.pem" ]; then
   cd "${PKI}"
 
-  if [ "${CERT_CN}" ]; then
+  if [ ! -z "${CERT_CN+x}" ]; then
     sed -i "s/\(CN=\).*/\1'${CERT_CN}'/" vars
   fi
-  if [ "${CERT_ORGANIZATION}" ]; then
+  if [ ! -z "${CERT_ORGANIZATION+x}" ]; then
     sed -i "s/\(ORGANIZATION=\).*/\1'${CERT_ORGANIZATION}'/" vars
   fi
-  if [ "${CERT_COUNTRY}" ]; then
+  if [ ! -z "${CERT_COUNTRY+x}" ]; then
     sed -i "s/\(COUNTRY=\).*/\1'${CERT_COUNTRY}'/" vars
   fi
-  if [ "${CERT_STATE}" ]; then
+  if [ ! -z "${CERT_STATE+x}" ]; then
     sed -i "s/\(STATE=\).*/\1'${CERT_STATE}'/" vars
   fi
-  if [ "${CERT_LOCALITY}" ]; then
+  if [ ! -z "${CERT_LOCALITY+x}" ]; then
     sed -i "s/\(LOCALITY=\).*/\1'${CERT_LOCALITY}'/" vars
   fi
 
