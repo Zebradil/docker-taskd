@@ -1,0 +1,19 @@
+version: "3.7"
+
+volumes:
+  data:
+
+services:
+  taskd:
+    image: "${DOCKER_REGISTRY}/${DOCKER_IMAGE}"
+    environment:
+      CERT_CN: localhost
+      CERT_ORGANIZATION: Org
+      CERT_STATE: State
+      CERT_COUNTRY: Country
+      CERT_LOCALITY: City
+    volumes:
+      - data:/var/taskd
+    ports:
+      - 53589:53589
+
